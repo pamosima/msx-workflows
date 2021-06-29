@@ -1,0 +1,182 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01PFN3JWM0T884AwQcqvdOT2kYIGNNvJ2df",
+    "name": "Get DNS \u0026 DHCP",
+    "title": "Get DNS \u0026 DHCP",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "dnsServerIps",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFN5FML17A63oDNS9IgF2gcOJcClkUtDH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "X-Auth-Token",
+          "type": "datatype.string",
+          "description": "DNAC Authorization Token",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFN3JWINFTL5DEcbMMXb2c4To9XLJNt9S",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "siteId",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFN3JWINH4B4XbQIDHbipD8zyAZnmJZM4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "dhcpServerIps",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFN3JWINCBZ1CxfVXj7bTCW3warATrQc1",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Cisco DNAC",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "//\n// Copyright (c) 2021 Cisco Systems, Inc and its affiliates\n// All Rights reserved\n//\n\ncreate an area with a specified hierarchy.",
+      "display_name": "Get DNS \u0026 DHCP",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01PFN3K0E84PT6h4djTYSMtgp0s3WdD0OiS",
+        "name": "HTTP Request",
+        "title": "getNetwork",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "x-auth-token",
+              "value": "$workflow.definition_workflow_01PFN3JWM0T884AwQcqvdOT2kYIGNNvJ2df.input.variable_workflow_01PFN3JWINFTL5DEcbMMXb2c4To9XLJNt9S$"
+            }
+          ],
+          "display_name": "getNetwork",
+          "method": "GET",
+          "relative_url": "dna/intent/api/v1/network?siteId=$workflow.definition_workflow_01PFN3JWM0T884AwQcqvdOT2kYIGNNvJ2df.input.variable_workflow_01PFN3JWINH4B4XbQIDHbipD8zyAZnmJZM4$",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PFN3K1OQPWR2q85OuZRcrmVSJniZqvi8Z",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_01PFN3K0E84PT6h4djTYSMtgp0s3WdD0OiS.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.response.[?(@.key==\"dhcp.server\")].value",
+              "jsonpath_query_name": "dhcp",
+              "jsonpath_query_type": "string"
+            },
+            {
+              "jsonpath_query": "$.response.[?(@.key==\"dns.server\")].value.[0].primaryIpAddress",
+              "jsonpath_query_name": "dns",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PFN3K3GGEAL5iaDNrBriagnD86cw51RyJ",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01PFN3JWM0T884AwQcqvdOT2kYIGNNvJ2df.output.variable_workflow_01PFN3JWINCBZ1CxfVXj7bTCW3warATrQc1$",
+              "variable_value_new": "$activity.definition_activity_01PFN3K1OQPWR2q85OuZRcrmVSJniZqvi8Z.output.jsonpath_queries.dhcp$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_01PFN3JWM0T884AwQcqvdOT2kYIGNNvJ2df.output.variable_workflow_01PFN5FML17A63oDNS9IgF2gcOJcClkUtDH$",
+              "variable_value_new": "$activity.definition_activity_01PFN3K1OQPWR2q85OuZRcrmVSJniZqvi8Z.output.jsonpath_queries.dns$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+    ]
+  },
+  "categories": {
+    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
+      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
+      "name": "CiscoDNACenter",
+      "title": "CiscoDNACenter",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Cisco DNA Center Actions",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
