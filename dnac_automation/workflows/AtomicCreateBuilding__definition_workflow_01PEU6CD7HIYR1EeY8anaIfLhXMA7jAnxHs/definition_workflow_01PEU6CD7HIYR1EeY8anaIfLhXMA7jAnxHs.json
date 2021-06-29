@@ -1,0 +1,158 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs",
+    "name": "Create Building",
+    "title": "Create Building",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "buildingName",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEU8XA4NPKE5fVp1q2AdzUeQo3f1GIyP4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "buildingParentName",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEU9GZBJNEO05cwIr6TmZTZyczSIu4rSd",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "buildingLatitude",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEUBLGKU1YN7ZTN5yfsee37com1RH2e1F",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "buildingAddress",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEUB8XY5NHS72wtKGjaeMhE43fvdy25FL",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "buildingLongitude",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEUBUL0I3ZC7kpQNBLb9HVPvuHWyoCmes",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "X-Auth-Token",
+          "type": "datatype.string",
+          "description": "DNAC Authorization Token",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEU6CD4CL9A3UoANrO6oJAYDyP4VeWEuD",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Cisco DNAC",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "//\n// Copyright (c) 2021 Cisco Systems, Inc and its affiliates\n// All Rights reserved\n//\n\ncreate a building with a specified hierarchy.",
+      "display_name": "Create Building",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01PEU6CGTAQ0Q1v3bU5zlWDEhsTYfhYR7vZ",
+        "name": "HTTP Request",
+        "title": "createArea",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n    \"type\": \"building\",\n    \"site\": {\n        \"building\": {\n            \"name\": \"$workflow.definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs.input.variable_workflow_01PEU8XA4NPKE5fVp1q2AdzUeQo3f1GIyP4$\",\n            \"address\": \"$workflow.definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs.input.variable_workflow_01PEU9GZBJNEO05cwIr6TmZTZyczSIu4rSd$\",\n            \"parentName\": \"$workflow.definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs.input.variable_workflow_01PEUB8XY5NHS72wtKGjaeMhE43fvdy25FL$\",\n            \"latitude\": \"$workflow.definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs.input.variable_workflow_01PEUBLGKU1YN7ZTN5yfsee37com1RH2e1F$\",\n            \"longitude\": \"$workflow.definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs.input.variable_workflow_01PEUBUL0I3ZC7kpQNBLb9HVPvuHWyoCmes$\"\n        }\n    }\n}",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "x-auth-token",
+              "value": "$workflow.definition_workflow_01PEU6CD7HIYR1EeY8anaIfLhXMA7jAnxHs.input.variable_workflow_01PEU6CD4CL9A3UoANrO6oJAYDyP4VeWEuD$"
+            }
+          ],
+          "display_name": "createArea",
+          "method": "POST",
+          "relative_url": "dna/intent/api/v1/site",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+    ]
+  },
+  "categories": {
+    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
+      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
+      "name": "CiscoDNACenter",
+      "title": "CiscoDNACenter",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Cisco DNA Center Actions",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
