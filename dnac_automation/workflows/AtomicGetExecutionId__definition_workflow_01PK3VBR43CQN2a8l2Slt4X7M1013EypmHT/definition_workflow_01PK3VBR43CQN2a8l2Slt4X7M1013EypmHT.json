@@ -1,0 +1,215 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01PK3VBR43CQN2a8l2Slt4X7M1013EypmHT",
+    "name": "Get Execution ID",
+    "title": "Get Execution ID",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "JSON Object",
+          "type": "datatype.string",
+          "description": "JSON Object toParse",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PK3VBR0OZJ11rwK4bCKc5OE3oweRvG57B",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Execution Id",
+          "type": "datatype.string",
+          "description": "DNAC Execution Id found",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PK3VBR0P4RE3dKPArj9kJnOddVIe5s6rE",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "$.",
+          "scope": "local",
+          "name": "jsonQuery",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PK3VBR0P5X90HOW0mcaaINHWf4Drybhno",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Cisco DNAC",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "//\n// Copyright (c) 2021 Cisco Systems, Inc and its affiliates\n// All Rights reserved\n//\n\nParses JSON object to retrieve DNAC Execution Id",
+      "display_name": "Get Execution ID",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01PK3VC1AJIVD7XUUSswrsm8byt6pAcHVgA",
+        "name": "JSONPath Query",
+        "title": "parseJSON",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": true,
+          "display_name": "parseJSON",
+          "input_json": "$workflow.definition_workflow_01PK3VBR43CQN2a8l2Slt4X7M1013EypmHT.input.variable_workflow_01PK3VBR0OZJ11rwK4bCKc5OE3oweRvG57B$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.executionId",
+              "jsonpath_query_name": "executionId",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PK3VC2H4KEL4ZKwCsz0UeBvaV6EJwKWVJ",
+        "name": "Condition Block",
+        "title": "If ( Succeded)",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "If ( Succeded)",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01PK3VC3JEGFJ0426ThsVHj4Z35kwUD3pmQ",
+            "name": "Condition Branch",
+            "title": "True:Then",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01PK3VC1AJIVD7XUUSswrsm8byt6pAcHVgA.output.succeeded$",
+                "operator": "eq",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "True:Then",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PK3VC4U1OB50AhLn7cShjY9raHVrYOqDC",
+                "name": "Set Variables",
+                "title": "Output.taskId = parseJSON.taskId",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Output.taskId = parseJSON.taskId",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01PK3VBR43CQN2a8l2Slt4X7M1013EypmHT.output.variable_workflow_01PK3VBR0P4RE3dKPArj9kJnOddVIe5s6rE$",
+                      "variable_value_new": "$activity.definition_activity_01PK3VC1AJIVD7XUUSswrsm8byt6pAcHVgA.output.jsonpath_queries.executionId$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01PK3VC64GDAS1DyYyjxWsspMqsyULA047h",
+                "name": "Completed",
+                "title": "Success",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "continue_on_failure": false,
+                  "display_name": "Success",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01PK3VC75PWAQ5y5nPeiOcEmniYx8Tr0X4h",
+            "name": "Condition Branch",
+            "title": "Else: False",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01PK3VC1AJIVD7XUUSswrsm8byt6pAcHVgA.output.succeeded$",
+                "operator": "ne",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "Else: False",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01PK3VC8AKTEG3bTWnvfyRBNQJtihjG2BAv",
+                "name": "Completed",
+                "title": "Failed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "continue_on_failure": false,
+                  "display_name": "Failed",
+                  "result_message": "Execution id not found in \\n\n$workflow.definition_workflow_01PK3VBR43CQN2a8l2Slt4X7M1013EypmHT.input.variable_workflow_01PK3VBR0OZJ11rwK4bCKc5OE3oweRvG57B$",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+    ]
+  },
+  "categories": {
+    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
+      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
+      "name": "CiscoDNACenter",
+      "title": "CiscoDNACenter",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Cisco DNA Center Actions",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
