@@ -21,19 +21,6 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "output",
-          "name": "Success",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01MK1BKGXAHN05ZtRJaPLPygXySiSP6LxqF",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
@@ -44,6 +31,19 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01MK2ECB12QRA6Z6Or6iZ9dQon2za9gKJfh",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "output",
+          "name": "Success",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01MK1BKGXAHN05ZtRJaPLPygXySiSP6LxqF",
         "object_type": "variable_workflow"
       }
     ],
@@ -259,17 +259,16 @@
       }
     ],
     "categories": [
-      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+      "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj"
     ]
   },
   "categories": {
-    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
-      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
-      "name": "CiscoDNACenter",
-      "title": "CiscoDNACenter",
+    "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj": {
+      "unique_name": "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj",
+      "name": "CiscoDNAC",
+      "title": "CiscoDNAC",
       "type": "basic.category",
       "base_type": "category",
-      "description": "Cisco DNA Center Actions",
       "category_type": "custom",
       "object_type": "category"
     }
