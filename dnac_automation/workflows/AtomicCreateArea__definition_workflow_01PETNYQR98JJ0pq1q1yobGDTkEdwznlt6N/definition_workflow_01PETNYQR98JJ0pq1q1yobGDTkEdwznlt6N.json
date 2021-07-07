@@ -11,6 +11,19 @@
         "properties": {
           "value": "",
           "scope": "input",
+          "name": "areaParentName",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PETUY4ZWSBN4rrCBCZ6jpXC08MZEsJcaU",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
           "name": "X-Auth-Token",
           "type": "datatype.string",
           "description": "DNAC Authorization Token",
@@ -24,13 +37,13 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "input",
-          "name": "areaParentName",
+          "scope": "output",
+          "name": "Output",
           "type": "datatype.string",
-          "is_required": true,
+          "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PETUY4ZWSBN4rrCBCZ6jpXC08MZEsJcaU",
+        "unique_name": "variable_workflow_01PPZ6ATVOLNS3Ke7wBPYs08WOxmGforHgX",
         "object_type": "variable_workflow"
       },
       {
@@ -96,6 +109,25 @@
           "target": {
             "use_workflow_target": true
           }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PPZ6R6E3Z9W0U2AN4aEYAmhq2FsM1mJua",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01PETNYQR98JJ0pq1q1yobGDTkEdwznlt6N.output.variable_workflow_01PPZ6ATVOLNS3Ke7wBPYs08WOxmGforHgX$",
+              "variable_value_new": "$activity.definition_activity_01PETNYU9EW722aAPeHiALO2we385jdC9j8.output.response_body$"
+            }
+          ]
         },
         "object_type": "definition_activity"
       }
