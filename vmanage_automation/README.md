@@ -1,4 +1,4 @@
-# dnac-automation
+# vmanage-automation
 This project contains a library of workflows that provides a simple interface to the Cisco vManage API.  
 
 ## Pre-Requisites
