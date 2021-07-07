@@ -25,12 +25,12 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "areaName",
+          "name": "areaParentName",
           "type": "datatype.string",
           "is_required": true,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PETURNOS4676DNOgfonfYIggSHBubFx42",
+        "unique_name": "variable_workflow_01PETUY4ZWSBN4rrCBCZ6jpXC08MZEsJcaU",
         "object_type": "variable_workflow"
       },
       {
@@ -38,12 +38,12 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "areaParentName",
+          "name": "areaName",
           "type": "datatype.string",
           "is_required": true,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PETUY4ZWSBN4rrCBCZ6jpXC08MZEsJcaU",
+        "unique_name": "variable_workflow_01PETURNOS4676DNOgfonfYIggSHBubFx42",
         "object_type": "variable_workflow"
       }
     ],
@@ -101,17 +101,16 @@
       }
     ],
     "categories": [
-      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+      "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj"
     ]
   },
   "categories": {
-    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
-      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
-      "name": "CiscoDNACenter",
-      "title": "CiscoDNACenter",
+    "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj": {
+      "unique_name": "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj",
+      "name": "CiscoDNAC",
+      "title": "CiscoDNAC",
       "type": "basic.category",
       "base_type": "category",
-      "description": "Cisco DNA Center Actions",
       "category_type": "custom",
       "object_type": "category"
     }
