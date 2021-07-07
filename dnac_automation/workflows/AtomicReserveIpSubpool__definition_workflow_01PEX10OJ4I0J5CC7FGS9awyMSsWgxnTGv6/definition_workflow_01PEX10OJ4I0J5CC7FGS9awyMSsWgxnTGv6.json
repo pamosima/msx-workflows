@@ -23,6 +23,45 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "siteId",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEX1LIF1VPS28UhImBFgHpBoK4a6bwM6z",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "dnsServerIps",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFLOP9MHO3333KlEamT6D7NkSLylceZzj",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Output",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PPXVYL2HWQG0b1qG2pGFlLEFNy6ud6td8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "256",
           "scope": "local",
           "name": "SubnetSize",
@@ -31,19 +70,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01PPT625T92FG3JJCg6eln2ml4HBotEKYEc",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "dhcpServerIps",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PFLPBLYOMF93lgRU4id73uWRceGsji1gr",
         "object_type": "variable_workflow"
       },
       {
@@ -64,12 +90,12 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "siteId",
+          "name": "dhcpServerIps",
           "type": "datatype.string",
-          "is_required": true,
+          "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PEX1LIF1VPS28UhImBFgHpBoK4a6bwM6z",
+        "unique_name": "variable_workflow_01PFLPBLYOMF93lgRU4id73uWRceGsji1gr",
         "object_type": "variable_workflow"
       },
       {
@@ -83,19 +109,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01PEX395UG4577MbSe9as9hWSheFkrXo9qF",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "dnsServerIps",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PFLOP9MHO3333KlEamT6D7NkSLylceZzj",
         "object_type": "variable_workflow"
       }
     ],
@@ -149,6 +162,25 @@
           "target": {
             "use_workflow_target": true
           }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01PPXWPOZEG3970zDWZtf0Z1UgQ7UluVNGx",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.output.variable_workflow_01PPXVYL2HWQG0b1qG2pGFlLEFNy6ud6td8$",
+              "variable_value_new": "$activity.definition_activity_01PEX10S67P8X5ONrbQiKfhlNLW4BtRpZWb.output.response_body$"
+            }
+          ]
         },
         "object_type": "definition_activity"
       }
