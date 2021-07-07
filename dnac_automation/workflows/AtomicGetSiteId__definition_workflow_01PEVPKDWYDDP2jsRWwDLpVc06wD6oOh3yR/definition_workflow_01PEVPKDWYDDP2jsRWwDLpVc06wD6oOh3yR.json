@@ -11,13 +11,12 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "X-Auth-Token",
+          "name": "Site Name",
           "type": "datatype.string",
-          "description": "DNAC Authorization Token",
-          "is_required": true,
+          "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PEVPKDTX9LN7eXQ8Ii7OaGoIWGJduFCVG",
+        "unique_name": "variable_workflow_01PEVSWUAGH4M6N5ovWq08yai844ih84iwV",
         "object_type": "variable_workflow"
       },
       {
@@ -25,12 +24,13 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "Site Name",
+          "name": "X-Auth-Token",
           "type": "datatype.string",
-          "is_required": false,
+          "description": "DNAC Authorization Token",
+          "is_required": true,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PEVSWUAGH4M6N5ovWq08yai844ih84iwV",
+        "unique_name": "variable_workflow_01PEVPKDTX9LN7eXQ8Ii7OaGoIWGJduFCVG",
         "object_type": "variable_workflow"
       },
       {
@@ -87,7 +87,7 @@
           ],
           "display_name": "getSite",
           "method": "GET",
-          "relative_url": "dna/intent/api/v1/site?name=Global/MSX/Zurich",
+          "relative_url": "dna/intent/api/v1/site?name=$workflow.definition_workflow_01PEVPKDWYDDP2jsRWwDLpVc06wD6oOh3yR.input.variable_workflow_01PEVSWUAGH4M6N5ovWq08yai844ih84iwV$",
           "runtime_user": {
             "target_default": true
           },
@@ -141,17 +141,16 @@
       }
     ],
     "categories": [
-      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+      "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj"
     ]
   },
   "categories": {
-    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
-      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
-      "name": "CiscoDNACenter",
-      "title": "CiscoDNACenter",
+    "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj": {
+      "unique_name": "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj",
+      "name": "CiscoDNAC",
+      "title": "CiscoDNAC",
       "type": "basic.category",
       "base_type": "category",
-      "description": "Cisco DNA Center Actions",
       "category_type": "custom",
       "object_type": "category"
     }
