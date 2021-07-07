@@ -23,14 +23,40 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "dnsServerIps",
+          "value": "256",
+          "scope": "local",
+          "name": "SubnetSize",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PFLOP9MHO3333KlEamT6D7NkSLylceZzj",
+        "unique_name": "variable_workflow_01PPT625T92FG3JJCg6eln2ml4HBotEKYEc",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "dhcpServerIps",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFLPBLYOMF93lgRU4id73uWRceGsji1gr",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "parentUuid",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PEX3L11PFUE7mdDXStuLEqY95zgd9wjey",
         "object_type": "variable_workflow"
       },
       {
@@ -64,25 +90,12 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "dhcpServerIps",
+          "name": "dnsServerIps",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PFLPBLYOMF93lgRU4id73uWRceGsji1gr",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "parentUuid",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PEX3L11PFUE7mdDXStuLEqY95zgd9wjey",
+        "unique_name": "variable_workflow_01PFLOP9MHO3333KlEamT6D7NkSLylceZzj",
         "object_type": "variable_workflow"
       }
     ],
@@ -92,7 +105,7 @@
         "is_atomic": true
       },
       "delete_workflow_instance": false,
-      "description": "//\n// Copyright (c) 2021 Cisco Systems, Inc and its affiliates\n// All Rights reserved\n//\n\ncreate an area with a specified hierarchy.",
+      "description": "//\n// Copyright (c) 2021 Cisco Systems, Inc and its affiliates\n// All Rights reserved\n//\n\nreserve IP subpool within global pool",
       "display_name": "Reserve IP Subpool",
       "runtime_user": {
         "override_target_runtime_user": false,
@@ -116,7 +129,7 @@
           "accept": "application/json",
           "action_timeout": 180,
           "allow_auto_redirect": true,
-          "body": "{\n    \"groupName\": \"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PEX395UG4577MbSe9as9hWSheFkrXo9qF$\",\n    \"groupOwner\": \"DNAC\",\n    \"type\": \"generic\",\n    \"siteId\": \"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PEX1LIF1VPS28UhImBFgHpBoK4a6bwM6z$\",\n    \"ipPools\":\n    [\n        {\n            \"parentUuid\": \"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PEX3L11PFUE7mdDXStuLEqY95zgd9wjey$\",\n            \"dhcpServerIps\":\n            $workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PFLPBLYOMF93lgRU4id73uWRceGsji1gr$,\n            \"dnsServerIps\":\n            [\"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PFLOP9MHO3333KlEamT6D7NkSLylceZzj$\"],\n            \"ipPoolOwner\": \"DNAC\",\n            \"shared\": true,\n\"gateways\":\n            [],\n\"numberOfIps\": 256\n        }\n    ]\n}",
+          "body": "{\n    \"groupName\": \"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PEX395UG4577MbSe9as9hWSheFkrXo9qF$\",\n    \"groupOwner\": \"DNAC\",\n    \"type\": \"generic\",\n    \"siteId\": \"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PEX1LIF1VPS28UhImBFgHpBoK4a6bwM6z$\",\n    \"ipPools\":\n    [\n        {\n            \"parentUuid\": \"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PEX3L11PFUE7mdDXStuLEqY95zgd9wjey$\",\n            \"dhcpServerIps\":\n            $workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PFLPBLYOMF93lgRU4id73uWRceGsji1gr$,\n            \"dnsServerIps\":\n            [\"$workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.input.variable_workflow_01PFLOP9MHO3333KlEamT6D7NkSLylceZzj$\"],\n            \"ipPoolOwner\": \"DNAC\",\n            \"shared\": true,\n\"gateways\":\n            [],\n\"numberOfIps\": $workflow.definition_workflow_01PEX10OJ4I0J5CC7FGS9awyMSsWgxnTGv6.local.variable_workflow_01PPT625T92FG3JJCg6eln2ml4HBotEKYEc$\n        }\n    ]\n}",
           "content_type": "application/json",
           "continue_on_error_status_code": false,
           "continue_on_failure": false,
@@ -141,17 +154,16 @@
       }
     ],
     "categories": [
-      "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA"
+      "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj"
     ]
   },
   "categories": {
-    "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA": {
-      "unique_name": "category_01MMSO7TK4OUT6A7iZ2P6hr9vvuBhukd3HA",
-      "name": "CiscoDNACenter",
-      "title": "CiscoDNACenter",
+    "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj": {
+      "unique_name": "category_01PJ62F8GU23X5n7RS1CKklpHy7eUnqSIbj",
+      "name": "CiscoDNAC",
+      "title": "CiscoDNAC",
       "type": "basic.category",
       "base_type": "category",
-      "description": "Cisco DNA Center Actions",
       "category_type": "custom",
       "object_type": "category"
     }
